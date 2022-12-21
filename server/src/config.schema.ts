@@ -1,7 +1,7 @@
 import * as Joi from 'joi';
 
 export const configValidationSchema = Joi.object({
-  MAIN_PORT: Joi.number().default(3000).required(),
+  MAIN_PORT: Joi.number().required(),
   POSTGRES_USERNAME: Joi.string().required(),
   POSTGRES_PASSWORD: Joi.string().required(),
   POSTGRES_PORT: Joi.number().default(5432).required(),

@@ -23,7 +23,9 @@
     "start": "cross-env PORT=3001 react-app-rewired start",
     "build": "cross-env react-app-rewired build",
     "test": "cross-env react-app-rewired test --env=jsdom",
-    "eject": "cross-env react-scripts eject"
+    "eject": "cross-env react-scripts eject",
+    "build-move:win": "yarn build && move build ../server/public",
+    "build-move:unix": "yarn build && move build ../server/public"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -5,6 +5,9 @@
   "author": "Enes Karakas <enes.coding@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "client-start": "yarn start --prefix client"
+    "client:start": "yarn --cwd client/ start",
+    "server:start-dev": "yarn --cwd server/ start:dev",
+    "build:win": "yarn --cwd client/ build-move:win",
+    "build:unix": "yarn --cwd client/ build-move:unix"
   }
 }
