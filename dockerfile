@@ -5,15 +5,17 @@ WORKDIR /app
 COPY package*.json ./
 
 COPY client/package*.json client/
-RUN yarn --cwd client/ install --production=true
+RUN yarn --cwd client/ install
 
 COPY server/package*.json server/
-RUN yarn --cwd server/ install --production=true
+RUN yarn --cwd server/ install
 
 COPY client/ client/
-RUN yarn build:unix
 
 COPY server/ server/
+COPY client/build/ server/public/
+RUN yarn --cwd server/ build
+
 
 USER node
 
