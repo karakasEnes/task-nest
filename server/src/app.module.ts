@@ -24,8 +24,9 @@ import { join } from 'path';
       useFactory: async (configService: ConfigService) => {
         const isProduction = configService.get('STAGE') === 'prod';
 
-        console.log('isProduction', isProduction);
-
+        const URL = isProduction
+          ? configService.get('POSTGRES_URL_PROD')
+          : null;
         const HOST = isProduction
           ? configService.get('POSTGRES_HOST_PROD')
           : 'localhost';
@@ -37,10 +38,7 @@ import { join } from 'path';
           : configService.get('POSTGRES_USERNAME');
 
         return {
-          ssl: isProduction,
-          extra: {
-            ssl: isProduction ? { rejectUnauthorized: false } : null,
-          },
+          url: URL,
           type: 'postgres',
           host: HOST,
           port: parseInt(configService.get('POSTGRES_PORT')),
@@ -49,6 +47,7 @@ import { join } from 'path';
           database: configService.get('POSTGRES_DB'),
           autoLoadEntities: true,
           synchronize: true,
+          logging: true,
         };
       },
     }),
