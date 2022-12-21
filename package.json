@@ -1,0 +1,10 @@
+{
+  "name": "nestjs-fullstack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Enes Karakas <enes.coding@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "client-start": "yarn start --prefix client"
+  }
+}
