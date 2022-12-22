@@ -1,6 +1,6 @@
 FROM node:lts-alpine
 
-WORKDIR /app
+WORKDIR /app-nest
 
 COPY package*.json ./
 
@@ -13,9 +13,8 @@ RUN yarn --cwd server/ install
 COPY client/ client/
 
 COPY server/ server/
-COPY client/build/ server/public/
 RUN yarn --cwd server/ build
-
+COPY client/build server/public
 
 USER node
 
