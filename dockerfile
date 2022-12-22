@@ -14,7 +14,7 @@ COPY client/ client/
 
 COPY server/ server/
 RUN yarn --cwd server/ build
-COPY client/build server/public
+
 
 USER node
 
